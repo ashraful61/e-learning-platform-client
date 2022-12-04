@@ -1,6 +1,5 @@
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import React, { useContext } from "react";
-import { Button } from "react-bootstrap";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 
@@ -29,13 +28,12 @@ const SocialLogin = () => {
 
   return (
     <div>
-      <Button onClick={handleGoogleLogin} variant="outline-primary">
+
         <FaGoogle></FaGoogle>Login with Google
-      </Button>{" "}
-      <Button onClick={handleGithubLogin} variant="outline-secondary">
-        {" "}
+
+
         <FaGithub></FaGithub> Login with Github
-      </Button>
+
     </div>
   );
 };
