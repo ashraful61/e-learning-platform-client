@@ -42,9 +42,9 @@ const Login = () => {
   };
 
   return (
-    <div className="w-3/6 mx-auto" >
-        <h3>Login here</h3>
-      <form onSubmit={handleSubmit} className='text-center'>
+    <div className="w-2/5 mx-auto pt-6">
+      <h3 className="text-4xl">Login here</h3>
+      <form onSubmit={handleSubmit} className="text-center">
         <div className="form-control">
           <label className="label">
             <span className="label-text">Enter your email</span>
@@ -77,7 +77,10 @@ const Login = () => {
       </form>
       <p>
         <small>
-          Don't have an account ? please <Link to="/register">Register</Link>
+          Don't have an account ? Please{" "}
+          <Link style={{ "text-decoration": "underline" }} to="/register">
+            Register
+          </Link>
         </small>
       </p>
       <SocialLogin></SocialLogin>

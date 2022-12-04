@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 import logo from "../../../assets/images/logo.jpg";
+import "./Header.css";
+
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
 
@@ -15,7 +17,7 @@ const Header = () => {
       <div className="navbar justify-between container">
         <div>
           <div className="md:hidden">
-            <div className="dropdown ">
+            <div className="dropdown">
               <label tabIndex={0} className="btn btn-ghost btn-circle">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -32,31 +34,67 @@ const Header = () => {
                   />
                 </svg>
               </label>
-              <ul
+              <ul 
                 tabIndex={0}
-                className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+                className=" bg-primary menu menu-compact dropdown-content mt-3 p-2 shadow rounded-box w-52"
               >
                 <li>
-                  <Link to="courses">Courses</Link>
+                <NavLink
+                  to="/"
+                  className={({ isActive, isPending }) => {
+                    return isActive ? "active" : "normal-link";
+                  }}
+                >
+                  Courses{" "}
+                </NavLink>
                 </li>
+              <li>
+              <NavLink
+                  className={({ isActive, isPending }) => {
+                    return isActive ? "active" : "normal-link";
+                  }}
+                  to="/FAQ"
+                >
+                  FAQ
+                </NavLink>
+              </li>
                 <li>
-                  <Link to="FAQ">FAQ</Link>
+                <NavLink
+                  className={({ isActive, isPending }) => {
+                    return isActive ? "active" : "normal-link";
+                  }}
+                  to="/blog"
+                >
+                  Blog
+                </NavLink>
                 </li>
-                <li>
-                  <Link to="blog">Blog</Link>
-                </li>
-                <li>
-                  Dark Theme
+                <span style={{ display: "flex" }} className="text-white">
+                  Dark Mode &nbsp;
                   <input
                     type="checkbox"
                     className="toggle toggle-secondary"
                     checked
                   />
-                </li>
+                </span>
+                &nbsp;
+                {user?.uid ? (
+                  <>
+                    <div className="avatar">
+                      <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                        <img src={user?.photoUrl} alt="" />
+                      </div>
+                    </div>
+                    <button onClick={handleLogOut} className="btn btn-error">
+                      Logout
+                    </button>
+                  </>
+                ) : (
+                  <button className="btn btn-primary">Log In</button>
+                )}
               </ul>
             </div>
           </div>
-          <NavLink>
+          <Link to="/">
             <img
               style={{ display: "inline" }}
               className="h-12"
@@ -65,10 +103,11 @@ const Header = () => {
             />
             &nbsp;
             <span className="text-white">Learn Web Development</span>
-          </NavLink>
+          </Link>
         </div>
         <div>
           <NavLink
+            to="/"
             className={({ isActive, isPending }) => {
               return isActive ? "active" : "normal-link";
             }}
@@ -79,13 +118,7 @@ const Header = () => {
             className={({ isActive, isPending }) => {
               return isActive ? "active" : "normal-link";
             }}
-            to="courses"
-          ></NavLink>
-          <NavLink
-            className={({ isActive, isPending }) => {
-              return isActive ? "active" : "normal-link";
-            }}
-            to="FAQ"
+            to="/FAQ"
           >
             FAQ
           </NavLink>
@@ -93,12 +126,19 @@ const Header = () => {
             className={({ isActive, isPending }) => {
               return isActive ? "active" : "normal-link";
             }}
-            to="blog"
+            to="/blog"
           >
             Blog
           </NavLink>
-          Dark Theme
-          <input type="checkbox" className="toggle toggle-secondary" checked />
+          <span style={{ display: "flex" }} className="text-white">
+            Dark Mode &nbsp;
+            <input
+              type="checkbox"
+              className="toggle toggle-secondary"
+              checked
+            />
+          </span>
+          &nbsp;
           {user?.uid ? (
             <>
               <div className="avatar">
@@ -106,10 +146,12 @@ const Header = () => {
                   <img src={user?.photoUrl} alt="" />
                 </div>
               </div>
-              <button className="btn btn-error">Logout</button>
+              <button onClick={handleLogOut} className="btn btn-error">
+                Logout
+              </button>
             </>
           ) : (
-            <button className="btn btn-sm">Log In</button>
+            <button className="btn btn-primary">Log In</button>
           )}
         </div>
       </div>
