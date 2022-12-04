@@ -6,7 +6,7 @@ import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Login = () => {
   const [error, setError] = useState("");
-  const { signIn, setLoading } = useContext(AuthContext);
+  const { googleLogin, setLoading } = useContext(AuthContext);
   const navigate = useNavigationType();
   const location = useLocation();
 
@@ -18,7 +18,7 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    signIn(email, password)
+    googleLogin(email, password)
       .then((result) => {
         const user = result.user;
         console.log(user);
@@ -75,10 +75,11 @@ const Login = () => {
         </div>
         <button className="btn btn-outline btn-primary w-3/6">Login</button>
       </form>
+      <p>{error}</p>
       <p>
         <small>
           Don't have an account ? Please{" "}
-          <Link style={{ "text-decoration": "underline" }} to="/register">
+          <Link style={{ "textDecoration": "underline" }} to="/register">
             Register
           </Link>
         </small>

@@ -12,6 +12,7 @@ const Header = () => {
       .then(() => {})
       .catch((error) => {});
   };
+  
   return (
     <div className="bg-primary">
       <div className="navbar justify-between container">
@@ -73,7 +74,7 @@ const Header = () => {
                   <input
                     type="checkbox"
                     className="toggle toggle-secondary"
-                    checked
+                    defaultChecked
                   />
                 </span>
                 &nbsp;
@@ -89,7 +90,9 @@ const Header = () => {
                     </button>
                   </>
                 ) : (
+                  <Link to='/login'>
                   <button className="btn btn-primary">Log In</button>
+                  </Link>
                 )}
               </ul>
             </div>
@@ -135,7 +138,7 @@ const Header = () => {
             <input
               type="checkbox"
               className="toggle toggle-secondary"
-              checked
+              defaultChecked
             />
           </span>
           &nbsp;
@@ -151,7 +154,14 @@ const Header = () => {
               </button>
             </>
           ) : (
+            <>
+            <Link to='/login'>
             <button className="btn btn-primary">Log In</button>
+            </Link>
+             <Link to='/register'>
+             <button className="btn btn-primary">Register</button>
+             </Link>
+            </>
           )}
         </div>
       </div>
