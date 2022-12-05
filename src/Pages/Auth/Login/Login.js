@@ -1,13 +1,13 @@
 import React, { useContext, useState } from "react";
-import { Link, useLocation, useNavigationType } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Login = () => {
   const [error, setError] = useState("");
-  const { googleLogin, setLoading } = useContext(AuthContext);
-  const navigate = useNavigationType();
+  const { emailLogin, setLoading } = useContext(AuthContext);
+  const navigate = useNavigate();
   const location = useLocation();
 
   const from = location.state?.from?.pathname || "/";
@@ -18,7 +18,7 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    googleLogin(email, password)
+    emailLogin(email, password)
       .then((result) => {
         const user = result.user;
         console.log(user);
@@ -44,7 +44,7 @@ const Login = () => {
   return (
     <div className="w-2/5 mx-auto pt-6">
       <h3 className="text-4xl">Login here</h3>
-      <form onSubmit={handleSubmit} className="text-center">
+      <form onSubmit={handleSubmit}>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Enter your email</span>
@@ -76,7 +76,7 @@ const Login = () => {
         <button className="btn btn-outline btn-primary w-3/6">Login</button>
       </form>
       <p>{error}</p>
-      <p>
+      <p className="my-5">
         <small>
           Don't have an account ? Please{" "}
           <Link style={{ "textDecoration": "underline" }} to="/register">

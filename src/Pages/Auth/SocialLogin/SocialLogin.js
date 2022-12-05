@@ -26,9 +26,9 @@ const SocialLogin = () => {
 
   return (
     <div>
-      <button onClick={handleGoogleLogin} className="btn mb-5 pt-5">
+      <button onClick={handleGoogleLogin} className="btn mb-5">
         <FaGoogle></FaGoogle> &nbsp; Login with Google
-      </button>
+      </button> <br/>
 
       <button onClick={handleGithubLogin} className="btn">
         {" "}

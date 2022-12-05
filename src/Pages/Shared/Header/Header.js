@@ -6,6 +6,7 @@ import "./Header.css";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
+  console.log('aaaa', user)
 
   const handleLogOut = () => {
     logOut()
@@ -108,7 +109,7 @@ const Header = () => {
             <span className="text-white">Learn Web Development</span>
           </Link>
         </div>
-        <div>
+        <div className="hidden md:flex">
           <NavLink
             to="/"
             className={({ isActive, isPending }) => {
@@ -146,12 +147,13 @@ const Header = () => {
             <>
               <div className="avatar">
                 <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                  <img src={user?.photoUrl} alt="" />
+                  <img src={user?.photoURL} alt="" />
                 </div>
               </div>
-              <button onClick={handleLogOut} className="btn btn-error">
+              <button onClick={handleLogOut} className="btn btn-error btn-sm ml-3">
                 Logout
               </button>
+         
             </>
           ) : (
             <>
