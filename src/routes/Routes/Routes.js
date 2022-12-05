@@ -14,6 +14,7 @@ export const routes = createBrowserRouter([
         children:[
             {
                 path: '/',
+                loader: async () => fetch('http://localhost:5000/courses'),
                 element:<Home></Home>
             },
             {
@@ -25,7 +26,8 @@ export const routes = createBrowserRouter([
                 element: <Register></Register>
             },
             {
-                path: 'course/',
+                path: 'course/:id',
+                loader: ({params}) => fetch(`http://localhost:5000/courses/${params.id}`) ,
                 element: <Courses></Courses>
             },
             {
