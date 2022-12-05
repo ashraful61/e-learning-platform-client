@@ -75,7 +75,7 @@ const Login = () => {
         </div>
         <button className="btn btn-outline btn-primary w-3/6">Login</button>
       </form>
-      <p>{error}</p>
+      <p className="text-rose-500">{error}</p>
       <p className="my-5">
         <small>
           Don't have an account ? Please{" "}

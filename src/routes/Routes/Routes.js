@@ -7,12 +7,14 @@ import Checkout from "../../Pages/Checkout/Checkout";
 import Courses from "../../Pages/Courses/CourseDetails";
 import FAQ from "../../Pages/FAQ/FAQ";
 import Home from "../../Pages/Home/Home";
+import NotFound from "../../Pages/NotFound/NotFound";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const routes = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <NotFound></NotFound>,
         children:[
             {
                 path: '/',
