@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 import logo from "../../../assets/images/logo.jpg";
@@ -6,6 +6,7 @@ import "./Header.css";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [theme, setTheme] = useState(false)
   console.log('aaaa', user)
 
   const handleLogOut = () => {
@@ -137,18 +138,21 @@ const Header = () => {
           <span style={{ display: "flex" }} className="text-white">
             Dark Mode &nbsp;
             <input
+            onClick={() => setTheme(!theme)}
               type="checkbox"
               className="toggle toggle-secondary"
-              defaultChecked
+              check={false}
             />
           </span>
           &nbsp;
           {user?.uid ? (
             <>
-              <div className="avatar">
+            <div className="tooltip tooltip-left" data-tip={user?.displayName}>
+              <div className="avatar cursor-pointer">
                 <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                   <img src={user?.photoURL} alt="" />
                 </div>
+              </div>
               </div>
               <button onClick={handleLogOut} className="btn btn-error btn-sm ml-3">
                 Logout

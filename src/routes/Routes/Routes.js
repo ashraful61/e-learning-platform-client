@@ -3,9 +3,11 @@ import Main from "../../layouts/Main";
 import Login from "../../Pages/Auth/Login/Login";
 import Register from "../../Pages/Auth/Register/Register";
 import Blog from "../../Pages/Blog/Blog";
+import Checkout from "../../Pages/Checkout/Checkout";
 import Courses from "../../Pages/Courses/CourseDetails";
 import FAQ from "../../Pages/FAQ/FAQ";
 import Home from "../../Pages/Home/Home";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const routes = createBrowserRouter([
     {
@@ -37,6 +39,10 @@ export const routes = createBrowserRouter([
             {
                 path:'blog',
                 element:<Blog></Blog>
+            },
+            {
+                path:'checkout',
+                element: <PrivateRoute><Checkout></Checkout></PrivateRoute>
             }
         ]
     }

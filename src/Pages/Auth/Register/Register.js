@@ -55,7 +55,7 @@ const Register = () => {
     }
 
     return (
-        <div className="w-2/5 mx-auto pt-6">
+        <div className="w-2/5 mx-auto pt-6 pb-6 mb-3">
         <h3 className="text-4xl">Register here</h3>
         <form onSubmit={handleSubmit}>
 

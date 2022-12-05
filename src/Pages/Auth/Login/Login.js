@@ -42,7 +42,7 @@ const Login = () => {
   };
 
   return (
-    <div className="w-2/5 mx-auto pt-6">
+    <div className="w-2/5 mx-auto pt-6 pb-6 mb-5">
       <h3 className="text-4xl">Login here</h3>
       <form onSubmit={handleSubmit}>
         <div className="form-control">
