@@ -1,12 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, { useContext} from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 import logo from "../../../assets/images/logo.jpg";
 import "./Header.css";
 
 const Header = () => {
-  const { user, logOut } = useContext(AuthContext);
-  const [theme, setTheme] = useState(false)
+  const { user, logOut, theme, setTheme } = useContext(AuthContext);
   console.log('aaaa', user)
 
   const handleLogOut = () => {
@@ -15,6 +14,11 @@ const Header = () => {
       .catch((error) => {});
   };
   
+  const toggleTheme = () => {
+    const setThemeVar =  theme === 'light' ? 'dark' : 'light';
+    setTheme(setThemeVar);
+    localStorage.setItem('theme',setThemeVar);
+  }
   return (
     <div className="bg-primary">
       <div className="navbar justify-between container">
@@ -135,13 +139,13 @@ const Header = () => {
           >
             Blog
           </NavLink>
-          <span style={{ display: "flex" }} className="text-white">
+          <span className=" flex text-white">
             Dark Mode &nbsp;
             <input
-            onClick={() => setTheme(!theme)}
+              onClick={toggleTheme}
               type="checkbox"
               className="toggle toggle-secondary"
-              check={false}
+              checked={theme === 'light' ? false : true}
             />
           </span>
           &nbsp;

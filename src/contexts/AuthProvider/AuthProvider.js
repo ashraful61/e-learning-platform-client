@@ -17,6 +17,7 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [theme, setTheme] = useState('light')
 
   const emailLogin = (email, password) => {
     setLoading(true);
@@ -66,6 +67,12 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
 
+  useEffect(()=>{
+    if(!!localStorage.getItem('theme')){
+      setTheme(localStorage.getItem('theme'))
+    }
+  }, [])
+
   const authInfo = {
     loading,
     setLoading,
@@ -76,7 +83,9 @@ const AuthProvider = ({ children }) => {
     createUser,
     updateUserProfile,
     verifyEmail,
-    googleLogin
+    googleLogin,
+    theme,
+    setTheme
   };
 
   return (

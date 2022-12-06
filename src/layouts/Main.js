@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Outlet } from 'react-router-dom';
+import { AuthContext } from '../contexts/AuthProvider/AuthProvider';
 import CourseCategory from '../Pages/Courses/CourseCategory';
 import Footer from '../Pages/Shared/Footer/Footer';
 import Header from '../Pages/Shared/Header/Header';
 
 const Main = () => {
+  const { theme } = useContext(AuthContext);
     return (
-        <>
+        <div data-theme={theme}>
           <Header></Header>
           <div class="flex">
             <div class="flex-none w-1/6">
@@ -18,7 +20,7 @@ const Main = () => {
           </div>
       
           <Footer></Footer>
-        </>
+        </div>
     );
 };
 
