@@ -7,6 +7,14 @@ const Main = () => {
     return (
         <>
           <Header></Header>
+          <div class="flex">
+            <div class="flex-none w-1/6">
+               
+            </div>
+            <div class="grow">
+              02
+            </div>
+          </div>
           <Outlet></Outlet>
           <Footer></Footer>
         </>

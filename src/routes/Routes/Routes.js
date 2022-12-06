@@ -18,7 +18,7 @@ export const routes = createBrowserRouter([
         children:[
             {
                 path: '/',
-                loader: async () => fetch('http://localhost:5000/courses'),
+                loader: async () => fetch('https://online-backend-learning.vercel.app/courses'),
                 element:<Home></Home>
             },
             {
@@ -31,7 +31,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path: 'course/:id',
-                loader: ({params}) => fetch(`http://localhost:5000/courses/${params.id}`) ,
+                loader: ({params}) => fetch(`https://online-backend-learning.vercel.app/courses/${params.id}`) ,
                 element: <Courses></Courses>
             },
             {
