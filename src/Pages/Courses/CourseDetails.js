@@ -4,12 +4,6 @@ import { Link, useLoaderData } from 'react-router-dom';
 const CourseDetails = () => {
     const courseDetail = useLoaderData();
     const {name, description, imgUrl, time, id} = courseDetail;
-console.log(courseDetail)
-    // const downloadPdf = () => {
-
-    // }
-
-
 
     return (
         <div className='my-5 container p-10'>
