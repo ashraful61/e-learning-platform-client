@@ -49,7 +49,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path: 'course-categories/:id',
-                loader: ({params}) => fetch(`http://localhost:5000/course-categories/${params.id}`),
+                loader: ({params}) => fetch(`https://online-backend-learning.vercel.app/course-categories/${params.id}`),
                 element: <CategoryWiseCourse></CategoryWiseCourse>
             }
         ]
