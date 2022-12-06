@@ -10,11 +10,11 @@ const Main = () => {
     return (
         <div data-theme={theme}>
           <Header></Header>
-          <div class="flex">
-            <div class="flex-none w-1/6">
+          <div className="flex">
+            <div className="flex-none w-1/6">
                <CourseCategory></CourseCategory>
             </div>
-            <div class="grow">
+            <div className="grow">
             <Outlet></Outlet>
             </div>
           </div>

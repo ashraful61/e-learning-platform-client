@@ -145,7 +145,7 @@ const Header = () => {
               onClick={toggleTheme}
               type="checkbox"
               className="toggle toggle-secondary"
-              checked={theme === 'light' ? false : true}
+              defaultChecked={theme === 'light' ? false : true}
             />
           </span>
           &nbsp;
