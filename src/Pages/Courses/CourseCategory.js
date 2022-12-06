@@ -9,12 +9,12 @@ const CourseCategory = () => {
         .then(data => setCategories(data));
     }, [])
     return (
-        <div>
-            <h3 className='text-3xl p-3'>Course Type</h3>
+        <div className='p-3'>
+            <h3 className='text-3xl'>Course Type</h3>
             <div>
                 {
                     categories.map(category => <p key={category.id}>
-                        <Link to={`/category/${category.id}`}>{category.name}</Link>
+                        <Link to={`/course-categories/${category.id}`}>{category.name}</Link>
                     </p>)
                 }
             </div>

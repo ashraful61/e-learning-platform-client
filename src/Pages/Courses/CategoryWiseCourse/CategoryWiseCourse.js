@@ -1,13 +1,13 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
-import Course from '../Courses/Course';
+import Course from '../Course';
 
-const Home = () => {
+const CategoryWiseCourse = () => {
     const data = useLoaderData();
     console.log(data)
     return (
         <div className='container mb-5'>
-            <div className='grid grid-cols-1 md:grid-cols-3 gap-16 pt-6 pb-5'>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-4 pt-6 pb-5'>
             {
                 data.map(course => <Course key={course.id} course={course}></Course>)
             }
@@ -16,4 +16,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default CategoryWiseCourse;
