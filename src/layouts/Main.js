@@ -8,7 +8,7 @@ import Header from '../Pages/Shared/Header/Header';
 const Main = () => {
   const { theme } = useContext(AuthContext);
     return (
-        <div data-theme={theme}>
+        <div style={{'padding':'1rem'}} data-theme={theme}>
           <Header></Header>
           <div className="flex">
             <div className="flex-none w-1/6">

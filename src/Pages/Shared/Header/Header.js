@@ -6,7 +6,7 @@ import "./Header.css";
 
 const Header = () => {
   const { user, logOut, theme, setTheme } = useContext(AuthContext);
-  console.log('aaaa', user)
+  // console.log('aaaa', user)
 
   const handleLogOut = () => {
     logOut()
@@ -45,61 +45,64 @@ const Header = () => {
                 tabIndex={0}
                 className=" bg-primary menu menu-compact dropdown-content mt-3 p-2 shadow rounded-box w-52"
               >
-                <li>
-                <NavLink
-                  to="/"
-                  className={({ isActive, isPending }) => {
-                    return isActive ? "active" : "normal-link";
-                  }}
-                >
-                  Courses{" "}
-                </NavLink>
-                </li>
-              <li>
               <NavLink
-                  className={({ isActive, isPending }) => {
-                    return isActive ? "active" : "normal-link";
-                  }}
-                  to="/FAQ"
-                >
-                  FAQ
-                </NavLink>
-              </li>
-                <li>
-                <NavLink
-                  className={({ isActive, isPending }) => {
-                    return isActive ? "active" : "normal-link";
-                  }}
-                  to="/blog"
-                >
-                  Blog
-                </NavLink>
-                </li>
-                <span style={{ display: "flex" }} className="text-white">
-                  Dark Mode &nbsp;
-                  <input
-                    type="checkbox"
-                    className="toggle toggle-secondary"
-                    defaultChecked
-                  />
-                </span>
-                &nbsp;
-                {user?.uid ? (
-                  <>
-                    <div className="avatar">
-                      <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                        <img src={user?.photoUrl} alt="" />
-                      </div>
-                    </div>
-                    <button onClick={handleLogOut} className="btn btn-error">
-                      Logout
-                    </button>
-                  </>
-                ) : (
-                  <Link to='/login'>
-                  <button className="btn btn-primary">Log In</button>
-                  </Link>
-                )}
+            to="/"
+            className={({ isActive, isPending }) => {
+              return isActive ? "active" : "normal-link";
+            }}
+          >
+            Courses{" "}
+          </NavLink>
+          <NavLink
+            className={({ isActive, isPending }) => {
+              return isActive ? "active" : "normal-link";
+            }}
+            to="/FAQ"
+          >
+            FAQ
+          </NavLink>
+          <NavLink
+            className={({ isActive, isPending }) => {
+              return isActive ? "active" : "normal-link";
+            }}
+            to="/blog"
+          >
+            Blog
+          </NavLink>
+          <span className=" flex text-white">
+            Dark Mode &nbsp;
+            <input
+              onClick={toggleTheme}
+              type="checkbox"
+              className="toggle toggle-secondary"
+              defaultChecked={theme === 'light' ? false : true}
+            />
+          </span>
+          &nbsp;
+          {user?.uid ? (
+            <>
+            <div className="tooltip tooltip-left" data-tip={user?.displayName}>
+              <div className="avatar cursor-pointer">
+                <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                  <img src={user?.photoURL} alt="" />
+                </div>
+              </div>
+              </div>
+              <button onClick={handleLogOut} className="btn btn-error btn-sm ml-3">
+                Logout
+              </button>
+         
+            </>
+          ) : (
+            <>
+            <Link to='/login'>
+            <button className="btn btn-primary">Log In</button>
+            </Link>
+             <Link to='/register'>
+             <button className="btn btn-primary">Register</button>
+             </Link>
+            </>
+          )}
               </ul>
             </div>
           </div>
